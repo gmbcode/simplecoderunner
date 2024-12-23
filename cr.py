@@ -26,13 +26,13 @@ if os.path.isfile(args.filename) and os.access(args.filename,os.R_OK):
         raise Exception("Invalid file extension")
 else:
     raise Exception("File does not exist / File is not accessible")
+os.chdir(arg_dir)
 print(f"{ext_code} {args.filename} -{args.optimization} -o {args.filename.split('.')[0]}.exe")
 e_code_1 = os.system(f"{ext_code} {args.filename} -{args.optimization} -o {args.filename.split('.')[0]}.exe")
 if e_code_1 != 0 :
     print("Error compiling code " )
     sys.exit(1)
 print(f"{ext_code} exited successfully with exit code {e_code_1}")
-os.chdir(arg_dir)
 print(f"Running {args.filename.split('.')[0]}.exe ")
 e_code_2 = os.system(f"{args.filename.split('.')[0]}.exe ")
 print(f"Program exited successfully with exit code {e_code_2}")
